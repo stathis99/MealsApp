@@ -7,13 +7,12 @@ function CategotyGridTile({title, color, onPress}){
     <View style = {styles.gridItem}>
         <Pressable style = {styles.button} onPress={onPress} >
             <View style = {[styles.innerContainer, {backgroundColor: color}]}>
-                <Text>{title}</Text>
+                <Text style={styles.baseText} >{title}</Text>
             </View> 
         </Pressable>
     </View>
 
     );
-
 }
 
 export default CategotyGridTile;
@@ -21,18 +20,24 @@ export default CategotyGridTile;
 const styles = StyleSheet.create({
     gridItem: {
         flex: 1,
-        margin: 16,
-        height: 150,
+        margin: 19,
+        height: 100,
         borderRadius: 8,
-        elevation: 4
+        elevation: 7
     },
     button: {
         flex: 1
     },
     innerContainer: {
         flex: 1,
-        padding:16,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 10,
+    },
+    baseText: {
+        fontFamily: "Cochin",
+        fontSize: 19,
+        fontWeight: "bold"
     }
 
 });
