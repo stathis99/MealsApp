@@ -10,6 +10,7 @@ function CategoriesScreen({ navigation }) {
     function pressHandler() {
       navigation.navigate('MealsOverview', {
         categoryId: itemData.item.id,
+        catColor: itemData.item.color,
       });
     }
 

@@ -1,13 +1,11 @@
 import { Text, View , StyleSheet, Image, Pressable} from "react-native";
 
-function onPress() {
-    console.log("heyyy");
-}
 
 
-function MealItem({ itemData }){
 
-    return <Pressable style = {[styles.gridItem, {backgroundColor: 'darkkhaki'}]} onPress={onPress}>  
+function MealItem({ itemData, onPressFunction }){
+
+    return (<Pressable style = {[styles.gridItem, {backgroundColor: 'darkkhaki'}]} onPress={onPressFunction}>  
         <View style = {styles.innerContainer}>
         <Text style = {styles.title}>{itemData.item.title}</Text>
         </View>
@@ -23,7 +21,7 @@ function MealItem({ itemData }){
         <Text style = {styles.desctiptionText}>{itemData.item.complexity}</Text>
         </View>
 
-    </Pressable>
+    </Pressable>);
 }
 
 const styles = StyleSheet.create({
