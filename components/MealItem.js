@@ -1,11 +1,20 @@
 import { Text, View , StyleSheet, Image, Pressable} from "react-native";
 
 
+import { useNavigation } from '@react-navigation/native';
 
 
-function MealItem({ itemData, onPressFunction }){
 
-    return (<Pressable style = {[styles.gridItem, {backgroundColor: 'darkkhaki'}]} onPress={onPressFunction}>  
+function MealItem({ itemData }){
+    const navigation = useNavigation();
+
+    function onPressFunction(){
+        navigation.navigate('Sintagi', {item: itemData});
+    }
+    
+
+    return (
+    <Pressable style = {[styles.gridItem, {backgroundColor: 'darkkhaki'}]} onPress={onPressFunction}>  
         <View style = {styles.innerContainer}>
         <Text style = {styles.title}>{itemData.item.title}</Text>
         </View>

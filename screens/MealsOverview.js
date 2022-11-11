@@ -8,7 +8,6 @@ import MealItem from '../components/MealItem';
 
 
 
-
 function MealsOverview({ route, navigation }) {
   const catId = route.params.categoryId;
 
@@ -16,12 +15,9 @@ function MealsOverview({ route, navigation }) {
     return mealItem.categoryIds.indexOf(catId) >= 0;
   });
 
-  function onPressFunction(){
-    navigation.navigate('Sintagi');
-  }
 
-  function renderMealItem(itemData) {
-    return <MealItem itemData = {itemData} onPressFunction = {onPressFunction}/>
+  function renderMealItem(itemData){
+    return <MealItem itemData = {itemData} />
   };
 
   useLayoutEffect(() => {
