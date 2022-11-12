@@ -1,4 +1,6 @@
-import { Text, View , StyleSheet, Image, Pressable, FlatList} from "react-native";
+import { Text, Button, View , StyleSheet, Image, Pressable, FlatList, ScrollView} from "react-native";
+import { useLayoutEffect } from 'react';
+import FavoriteButton from "../components/FavoriteButton";
 
 
 
@@ -6,10 +8,20 @@ import { Text, View , StyleSheet, Image, Pressable, FlatList} from "react-native
 function Sintagi({ route, navigation }){
     const item = route.params.item
 
+    function onPressFavoriteHandler(){
+        console.log("pressed");
+    }
 
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => {
+                return <FavoriteButton pressHandler={onPressFavoriteHandler} />;
+            }
+        })
+    },[navigation]);
 
     return (       
-        <View>
+        <ScrollView>
         <Image
             style={styles.bigLogo}
             source={{
@@ -39,19 +51,23 @@ function Sintagi({ route, navigation }){
 
    
       
-    </View>
+    </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
     bigLogo: {
         maxWidth: '100%',
-                height: 200,
+        height: 200,
      },
     titleContainer:{
         justifyContent: 'center',
         alignItems: 'center',
-        height: 100
+        padding: 10,
+        borderBottomColor: 'black',
+        borderBottomWidth:1,
+        marginVertical: 4,
+        marginHorizontal: 50
     },
     title: {
         fontFamily: "Cochin",
@@ -63,7 +79,7 @@ const styles = StyleSheet.create({
     innerContainer:{
         justifyContent: 'center',
         alignItems: 'center',
-        height: 20
+        margin: 10,
     }
 })
 
