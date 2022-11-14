@@ -5,10 +5,37 @@ import { NavigationContainer } from  '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import MealsOverview from './screens/MealsOverview'
 import Sintagi from './screens/sintagi';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import FavoriteMeals from './screens/FavoriteMeals';
+import { Ionicons } from '@expo/vector-icons';
 
-
-
+const Bottom = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
+
+function BottomNavigator() {
+  return (
+    <Bottom.Navigator>
+        <Bottom.Screen
+        name="Categories"
+        component={CategoriesScreen}
+        options={{tabBarIcon: () => (
+        <Ionicons name= "home" size="25"/>
+        ),
+      }}
+      />
+        <Bottom.Screen
+        name="Favorite"
+        component={FavoriteMeals}
+        options={{tabBarIcon: () => (
+          <Ionicons name= "star" size="25"/>
+          ),
+        }}
+      />
+    </Bottom.Navigator>
+  );
+}
+
+
 
 export default function App() {
   return (
@@ -18,7 +45,7 @@ export default function App() {
         <Stack.Navigator screenOptions={{
           headerStyle: {backgroundColor: "#f0f8ff"}
         }}>
-          <Stack.Screen options = {{title: "Categories" }}  name="MealsCategories" component={CategoriesScreen} />
+          <Stack.Screen options={{headerShown: false}} name="DrawrerScreen" component={BottomNavigator} />
           <Stack.Screen name="MealsOverview" component={MealsOverview} 
           // options = {({route, navigation}) => {
           //   const catId = route.params.categoryId;

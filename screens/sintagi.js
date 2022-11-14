@@ -43,14 +43,7 @@ function Sintagi({ route, navigation }){
             return (<View style = {styles.innerContainer}><Text>{step}</Text></View>)
         })}
 
-
-
-
-
-
-
-   
-      
+  
     </ScrollView>
     );
 }
