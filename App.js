@@ -8,6 +8,8 @@ import Sintagi from './screens/sintagi';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import FavoriteMeals from './screens/FavoriteMeals';
 import { Ionicons } from '@expo/vector-icons';
+import FavoritesContextProvider from './store/context/favoreites-context';
+
 
 const Bottom = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -41,6 +43,7 @@ export default function App() {
   return (
     <>
       <StatusBar style="dark" />
+      <FavoritesContextProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{
           headerStyle: {backgroundColor: "#f0f8ff"}
@@ -59,6 +62,7 @@ export default function App() {
           <Stack.Screen name="Sintagi" component={Sintagi}/>
         </Stack.Navigator>
       </NavigationContainer>
+      </FavoritesContextProvider>
     </>
   );
 }

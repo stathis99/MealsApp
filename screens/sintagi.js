@@ -1,21 +1,31 @@
 import { Text, Button, View , StyleSheet, Image, Pressable, FlatList, ScrollView} from "react-native";
 import { useLayoutEffect } from 'react';
 import FavoriteButton from "../components/FavoriteButton";
-
+import { FavoritesContext } from "../store/context/favoreites-context";
+import { useContext } from "react";
 
 
 
 function Sintagi({ route, navigation }){
     const item = route.params.item
 
+    const FavoriteMealsCtx = useContext(FavoritesContext);
+
+    const IsFavorite = FavoriteMealsCtx.ids.includes(item.item.id);
+
     function onPressFavoriteHandler(){
-        console.log("pressed");
+
+        if(IsFavorite){
+            FavoriteMealsCtx.removeFavorite(item.item.id);
+        }else{
+            FavoriteMealsCtx.addFavorite(item.item.id);
+        }
     }
 
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => {
-                return <FavoriteButton pressHandler={onPressFavoriteHandler} />;
+                return <FavoriteButton pressHandler={onPressFavoriteHandler} name = {IsFavorite ? "star" : "star-outline"} />;
             }
         })
     },[navigation]);

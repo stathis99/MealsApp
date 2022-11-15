@@ -1,11 +1,11 @@
 import {Button, Pressable } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
-function FavoriteButton({pressHandler}){
+function FavoriteButton({pressHandler, name }){
 
     return(
         <Pressable onPress={pressHandler}>
-            <Ionicons name= 'star' size= '22' color={'green'}/>
+            <Ionicons name= {name} size= '22' color={'blue'}/>
         </Pressable>
 
     ) 
